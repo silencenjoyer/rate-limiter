@@ -12,5 +12,3 @@ RUN apt-get update \
     && docker-php-ext-install pcntl \
     && docker-php-ext-install gd \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-RUN pecl install redis && docker-php-ext-enable redis

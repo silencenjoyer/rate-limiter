@@ -3,19 +3,10 @@ services:
     build:
       context: .
       dockerfile: ./php/Dockerfile
-    command: bash -c "cd /app && composer install && composer test-coverage"
+#    command: bash -c "cd /app && composer install && composer test-coverage"
+    tty: true
     volumes:
       - ../../:/app
-    networks:
-      - test
-
-  redis:
-    image: redis
-    container_name: redis
-    volumes:
-      - ./redis/data:/data
-    ports:
-      - "6379:6379"
     networks:
       - test
 
