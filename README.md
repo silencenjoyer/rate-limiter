@@ -13,21 +13,6 @@ composer require silencenjoyer/rate-limiter
 ## Usage
 
 ```php
-use Silencenjoyer\RateLimit\Counters\RedisCounter;
-use Silencenjoyer\RateLimit\Intervals\Interval;
-use Silencenjoyer\RateLimit\Limiters\RateLimiter;
-use Silencenjoyer\RateLimit\Rates\Rate;
-
-$counter = new RedisCounter('rate:send:api', new Redis());
-$rateLimiter = new RateLimiter($counter, new Rate(10, new Interval('PT1S')));
-
-foreach ($messages as $message) {
-    $rateLimiter->stretch(function() use ($api) {
-        $api->post($message);
-    });
-}
-```
-```php
 use Silencenjoyer\RateLimit\Counters\LocalCounter;
 use Silencenjoyer\RateLimit\Intervals\Interval;
 use Silencenjoyer\RateLimit\Limiters\RateLimiter;
